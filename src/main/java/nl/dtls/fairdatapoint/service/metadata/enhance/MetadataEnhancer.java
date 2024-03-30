@@ -113,6 +113,7 @@ public class MetadataEnhancer {
             setLabel(metadata, uri, getTitle(metadata));
         }
 
+        // TODO: delete these and config values?
         // Add default language
         if (!containsObject(metadata, uri.stringValue(), DCTERMS.LANGUAGE.stringValue()) && language != null) {
             setLanguage(metadata, uri, language);
