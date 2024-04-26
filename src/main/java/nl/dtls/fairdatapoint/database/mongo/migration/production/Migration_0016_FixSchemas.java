@@ -30,7 +30,6 @@ import io.mongock.api.annotations.Execution;
 import io.mongock.api.annotations.RollbackExecution;
 import lombok.SneakyThrows;
 import nl.dtls.fairdatapoint.Profiles;
-import nl.dtls.fairdatapoint.entity.schema.SemVer;
 import nl.dtls.fairdatapoint.util.KnownUUIDs;
 import org.bson.Document;
 import org.springframework.context.annotation.Profile;
@@ -70,7 +69,7 @@ public class Migration_0016_FixSchemas {
     @SneakyThrows
     private void updateSchema(String versionUuid, String name) {
         final MongoCollection<Document> schemasCol = database.getCollection(COL_SCHEMAS);
-        String definition = loadClassResource(format("0016_shape-%s.ttl", name), getClass());
+        final String definition = loadClassResource(format("0016_shape-%s.ttl", name), getClass());
         schemasCol.updateOne(
                 Filters.and(
                         Filters.eq(FIELD_VER_UUID, versionUuid),

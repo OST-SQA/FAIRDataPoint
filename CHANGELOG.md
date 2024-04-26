@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.17.2]
+
+### Fixed
+
+- Fix metadata schemas (defaults, ordering, FDP shape)
+- Default license in metadata schemas and configuration
 
 ## [1.17.1]
 
