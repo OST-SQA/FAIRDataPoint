@@ -55,6 +55,6 @@ public class SingpostingTest extends WebIntegrationTest {
         assertThat("<http://example.com/publisher>; rel=\"author\"", linkHeaderMatcher);
         assertThat("<http://localhost:8088/catalog/catalog-1>; rel=\"cite-as\"", linkHeaderMatcher);
         assertThat("<http://www.w3.org/ns/dcat#Catalog>; rel=\"type\"", linkHeaderMatcher);
-        assertThat("<http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd3.0>; rel=\"license\"", linkHeaderMatcher);
+        assertThat("<http://purl.org/NET/rdflicense/cc-zero1.0>; rel=\"license\"", linkHeaderMatcher);
     }
 }
