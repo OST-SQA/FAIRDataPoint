@@ -43,6 +43,8 @@ public class InstanceProperties {
     private String title = "FAIR Data Point";
     private String subtitle = "Metadata for machines";
 
+    private String seedPath = "/data/**/*.yml";
+
     public String getUrl() {
         if (persistentUrl == null || persistentUrl.isBlank()) {
             return clientUrl;

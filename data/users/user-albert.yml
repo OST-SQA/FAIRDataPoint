@@ -1,0 +1,8 @@
+version: 1.0
+type: User
+entity:
+  uuid:
+  firstName: Albert
+  lastName: Einstein
+  email: albert.einstein@example.com
+  password: password

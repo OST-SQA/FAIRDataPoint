@@ -1,0 +1,10 @@
+version: '1.0'
+type: 'Schema'
+entity:
+  uuid:
+  versionUuid:
+  version: ''
+  name: 'Resource'
+  description: ''
+  abstract: true
+  definition:

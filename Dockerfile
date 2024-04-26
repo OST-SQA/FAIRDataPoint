@@ -25,6 +25,7 @@ FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /fdp
 
+ADD data /data
 ADD target/fdp-spring-boot.jar /fdp/app.jar
 ADD target/classes/application-production.yml /fdp/application.yml
 
