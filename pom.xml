@@ -276,7 +276,8 @@
                 <configuration>
                     <header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
                     <properties>
-                        <owner>DTL</owner>
+                        <owner>FAIR Data Team</owner>
+                        <year>2024</year>
                     </properties>
                     <mapping>
                         <java>JAVADOC_STYLE</java>
