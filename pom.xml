@@ -8,7 +8,7 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>nl.dtls</groupId>
+    <groupId>org</groupId>
     <artifactId>fairdatapoint</artifactId>
     <version>1.17.1</version>
     <packaging>jar</packaging>
@@ -331,7 +331,7 @@
                         </goals>
                         <configuration>
                             <classifier>spring-boot</classifier>
-                            <mainClass>nl.dtls.fairdatapoint.Application</mainClass>
+                            <mainClass>org.fairdatapoint.Application</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -416,7 +416,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <package>nl.dtls.fairdatapoint.vocabulary</package>
+                    <package>org.fairdatapoint.vocabulary</package>
                     <addGeneratedAnnotation>false</addGeneratedAnnotation>
                     <vocabularies>
                         <vocabulary>
