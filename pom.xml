@@ -360,7 +360,7 @@
                     <dependency>
                         <groupId>io.spring.javaformat</groupId>
                         <artifactId>spring-javaformat-checkstyle</artifactId>
-                        <version>0.0.41</version>
+                        <version>0.0.42</version>
                     </dependency>
                 </dependencies>
             </plugin>
