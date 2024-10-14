@@ -249,12 +249,12 @@
             <version>${lombok.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.fairdevkit</groupId>
+            <groupId>com.github.fairdatateam</groupId>
             <artifactId>rdf-resource-resolver-core</artifactId>
             <version>${rdf-resolver.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.fairdevkit</groupId>
+            <groupId>com.github.fairdatateam</groupId>
             <artifactId>rdf-resource-resolver-api</artifactId>
             <version>${rdf-resolver.version}</version>
         </dependency>
