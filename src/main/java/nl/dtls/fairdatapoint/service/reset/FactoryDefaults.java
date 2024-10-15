@@ -437,7 +437,7 @@ public class FactoryDefaults {
                         .append(FIELD_AUDIT_FAILURE, false)
                         .append(FIELD_AUDIT_SUCCESS, false));
         acl.append("permissions", permissions);
-        acl.append("_class", "org.springframework.security.acls.domain.MongoAcl");
+        acl.append("_class", "com.github.fairdatateam.security.acls.domain.MongoAcl");
         return acl;
     }
 
