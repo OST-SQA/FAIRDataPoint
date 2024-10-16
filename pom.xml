@@ -97,7 +97,8 @@
             <!-- use <id> to specify github PAT in ~/.m2/settings.xml <server> section: https://maven.apache.org/settings.html#servers -->
             <id>github-packages</id>
             <name>Github Packages</name>
-            <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY_OWNER}/*</url>
+            <!-- TODO: use <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY_OWNER}/*</url> -->
+            <url>https://maven.pkg.github.com/dennisvang/*</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
