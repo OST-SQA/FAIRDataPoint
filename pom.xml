@@ -51,15 +51,15 @@
         <maven.compiler.target>21</maven.compiler.target>
 
         <!-- Project related -->
-        <spring.rdf.migration.version>1.2.0.RELEASE</spring.rdf.migration.version>
-
+        <spring.rdf.migration.version>2.0.0dev0</spring.rdf.migration.version>
+        <rdf-resolver.version>0.2.0dev0</rdf-resolver.version>
+        
         <!-- Core -->
         <springdoc.version>2.5.0</springdoc.version>
         <postgresql.version>42.7.3</postgresql.version>
         <rdf4j.version>4.3.12</rdf4j.version>
         <jwt.version>0.12.5</jwt.version>
         <lombok.version>1.18.32</lombok.version>
-        <rdf-resolver.version>0.1.2-SNAPSHOT</rdf-resolver.version>
         <hypersistence.version>3.7.6</hypersistence.version>
 
         <!-- Test -->
@@ -76,44 +76,25 @@
         <plugin.spotbugs.version>4.8.5.0</plugin.spotbugs.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <!-- https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry -->
-            <!-- https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow -->
-            <!-- use <id> to specify github PAT in ~/.m2/settings.xml <server> section: https://maven.apache.org/settings.html#servers -->
-            <id>github-packages</id>
-            <name>Github Packages</name>
-            <!-- TODO: use <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY_OWNER}/*</url> -->
-            <url>https://maven.pkg.github.com/dennisvang/*</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <dependencies>
 
         <!-- ////////////////// -->
         <!--   Project related  -->
         <!-- ////////////////// -->
         <dependency>
-            <groupId>nl.dtls</groupId>
+            <groupId>io.github.dennisvang</groupId>
             <artifactId>spring-rdf-migration</artifactId>
             <version>${spring.rdf.migration.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.dennisvang</groupId>
+            <artifactId>rdf-resource-resolver-core</artifactId>
+            <version>${rdf-resolver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.dennisvang</groupId>
+            <artifactId>rdf-resource-resolver-api</artifactId>
+            <version>${rdf-resolver.version}</version>
         </dependency>
 
         <!-- ////////////////// -->
@@ -213,16 +194,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.fairdatateam</groupId>
-            <artifactId>rdf-resource-resolver-core</artifactId>
-            <version>${rdf-resolver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.fairdatateam</groupId>
-            <artifactId>rdf-resource-resolver-api</artifactId>
-            <version>${rdf-resolver.version}</version>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
