@@ -111,3 +111,4 @@ springdoc:
 
 server:
   forward-headers-strategy: framework
+  port: 8080

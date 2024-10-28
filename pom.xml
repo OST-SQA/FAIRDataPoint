@@ -51,8 +51,8 @@
         <maven.compiler.target>21</maven.compiler.target>
 
         <!-- Project related -->
-        <spring.rdf.migration.version>2.0.0dev0</spring.rdf.migration.version>
-        <rdf-resolver.version>0.2.0dev0</rdf-resolver.version>
+        <spring.rdf.migration.version>2.0.0</spring.rdf.migration.version>
+        <rdf-resolver.version>0.2.0</rdf-resolver.version>
         
         <!-- Core -->
         <springdoc.version>2.5.0</springdoc.version>
@@ -82,17 +82,17 @@
         <!--   Project related  -->
         <!-- ////////////////// -->
         <dependency>
-            <groupId>io.github.dennisvang</groupId>
+            <groupId>org.fairdatateam.rdf</groupId>
             <artifactId>spring-rdf-migration</artifactId>
             <version>${spring.rdf.migration.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.github.dennisvang</groupId>
+            <groupId>org.fairdatateam.rdf</groupId>
             <artifactId>rdf-resource-resolver-core</artifactId>
             <version>${rdf-resolver.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.github.dennisvang</groupId>
+            <groupId>org.fairdatateam.rdf</groupId>
             <artifactId>rdf-resource-resolver-api</artifactId>
             <version>${rdf-resolver.version}</version>
         </dependency>
