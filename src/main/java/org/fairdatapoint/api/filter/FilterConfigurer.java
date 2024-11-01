@@ -36,15 +36,12 @@ public class FilterConfigurer extends
 
     private final JwtTokenFilter jwtTokenFilter;
 
-    private final CORSFilter corsFilter;
-
     private final LoggingFilter loggingFilter;
 
     @Override
     public void configure(HttpSecurity http) {
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore(corsFilter, JwtTokenFilter.class);
-        http.addFilterBefore(loggingFilter, CORSFilter.class);
+        http.addFilterBefore(loggingFilter, JwtTokenFilter.class);
     }
 
 }
