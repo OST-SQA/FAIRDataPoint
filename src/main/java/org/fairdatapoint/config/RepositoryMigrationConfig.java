@@ -23,8 +23,8 @@
 package org.fairdatapoint.config;
 
 import org.fairdatapoint.Profiles;
-import nl.dtls.rdf.migration.database.RdfMigrationRepository;
-import nl.dtls.rdf.migration.runner.RdfProductionMigrationRunner;
+import org.fairdatateam.rdf.migration.database.RdfMigrationRepository;
+import org.fairdatateam.rdf.migration.runner.RdfProductionMigrationRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

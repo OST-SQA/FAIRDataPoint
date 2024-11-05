@@ -24,8 +24,8 @@ package org.fairdatapoint.database.rdf.migration.production;
 
 import lombok.extern.slf4j.Slf4j;
 import org.fairdatapoint.service.reset.FactoryDefaults;
-import nl.dtls.rdf.migration.entity.RdfMigrationAnnotation;
-import nl.dtls.rdf.migration.runner.RdfProductionMigration;
+import org.fairdatateam.rdf.migration.entity.RdfMigrationAnnotation;
+import org.fairdatateam.rdf.migration.runner.RdfProductionMigration;
 import org.bson.Document;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Statement;

@@ -23,8 +23,8 @@
 package org.fairdatapoint.database.rdf.migration.production;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.dtls.rdf.migration.entity.RdfMigrationAnnotation;
-import nl.dtls.rdf.migration.runner.RdfProductionMigration;
+import org.fairdatateam.rdf.migration.entity.RdfMigrationAnnotation;
+import org.fairdatateam.rdf.migration.runner.RdfProductionMigration;
 import org.springframework.stereotype.Service;
 
 @RdfMigrationAnnotation(
