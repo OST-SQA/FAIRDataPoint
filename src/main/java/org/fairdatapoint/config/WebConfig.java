@@ -92,15 +92,15 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-        .allowedOrigins("*")
-        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")  // todo: what about OPTIONS?
-        .allowedHeaders(
-            HttpHeaders.ORIGIN, 
-            HttpHeaders.AUTHORIZATION, 
-            HttpHeaders.ACCEPT, 
-            HttpHeaders.CONTENT_TYPE
-            )
-        .exposedHeaders(HttpHeaders.LOCATION, HttpHeaders.LINK);
+                .allowedOrigins("*")
+                // todo: what about OPTIONS?
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
+                .allowedHeaders(
+                        HttpHeaders.ORIGIN,
+                        HttpHeaders.AUTHORIZATION,
+                        HttpHeaders.ACCEPT,
+                        HttpHeaders.CONTENT_TYPE)
+                .exposedHeaders(HttpHeaders.LOCATION, HttpHeaders.LINK);
     }
 
 }
