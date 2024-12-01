@@ -58,7 +58,7 @@
         <springdoc.version>2.5.0</springdoc.version>
         <postgresql.version>42.7.3</postgresql.version>
         <rdf4j.version>4.3.12</rdf4j.version>
-        <jwt.version>0.12.5</jwt.version>
+        <jwt.version>0.12.6</jwt.version>
         <lombok.version>1.18.32</lombok.version>
         <hypersistence.version>3.7.6</hypersistence.version>
 
