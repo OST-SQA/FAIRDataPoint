@@ -28,7 +28,7 @@ jobs:
 
       - name: Setup PostgreSQL DB
         if: matrix.os != 'macos-12'  # macOS is too slow for tests in GitHub Actions
-        uses: ikalnytskyi/action-setup-postgres@v6
+        uses: ikalnytskyi/action-setup-postgres@v7
         id: postgres
         with:
           username: fdp
