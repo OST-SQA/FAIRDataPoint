@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
+        <version>3.2.12</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.fairdatapoint</groupId>
@@ -58,7 +58,7 @@
         <springdoc.version>2.5.0</springdoc.version>
         <postgresql.version>42.7.3</postgresql.version>
         <rdf4j.version>4.3.12</rdf4j.version>
-        <jwt.version>0.12.5</jwt.version>
+        <jwt.version>0.12.6</jwt.version>
         <lombok.version>1.18.32</lombok.version>
         <hypersistence.version>3.7.6</hypersistence.version>
 
@@ -73,7 +73,7 @@
         <plugin.git_commit_id.version>9.0.0</plugin.git_commit_id.version>
         <plugin.rdf4j_generator.version>0.2.0</plugin.rdf4j_generator.version>
         <plugin.checkstyle.version>3.4.0</plugin.checkstyle.version>
-        <plugin.spotbugs.version>4.8.5.0</plugin.spotbugs.version>
+        <plugin.spotbugs.version>4.8.6.6</plugin.spotbugs.version>
     </properties>
 
     <dependencies>
