@@ -52,7 +52,7 @@
 
         <!-- Project related -->
         <spring.rdf.migration.version>2.0.0</spring.rdf.migration.version>
-        <spring.security.acl.mongo.version>5.2.4.RELEASE</spring.security.acl.mongo.version>
+        <spring.security.acl.mongo.version>6.0.0.RELEASE</spring.security.acl.mongo.version>
         <rdf-resolver.version>0.2.0</rdf-resolver.version>
         
         <!-- Core -->
@@ -157,7 +157,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.security</groupId>
+            <groupId>org.fairdatateam.security</groupId>
             <artifactId>spring-security-acl-mongodb</artifactId>
             <version>${spring.security.acl.mongo.version}</version>
         </dependency>
@@ -411,7 +411,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <package>nl.dtls.fairdatapoint.vocabulary</package>
+                    <package>org.fairdatapoint.vocabulary</package>
                     <addGeneratedAnnotation>false</addGeneratedAnnotation>
                     <vocabularies>
                         <vocabulary>
