@@ -5,10 +5,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.1</version>
+        <version>3.2.12</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>nl.dtls</groupId>
+    <groupId>org.fairdatapoint</groupId>
     <artifactId>fairdatapoint</artifactId>
     <version>1.17.2</version>
     <packaging>jar</packaging>
@@ -47,63 +47,35 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Maven -->
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
         <!-- Project related -->
-        <spring.rdf.migration.version>1.2.0.RELEASE</spring.rdf.migration.version>
+        <spring.rdf.migration.version>2.0.0</spring.rdf.migration.version>
         <spring.security.acl.mongo.version>5.2.4.RELEASE</spring.security.acl.mongo.version>
-
+        <rdf-resolver.version>0.2.0</rdf-resolver.version>
+        
         <!-- Core -->
-        <springdoc.version>2.1.0</springdoc.version>
+        <springdoc.version>2.5.0</springdoc.version>
         <mongock.version>5.3.1</mongock.version>
         <mongodb.spring-data.version>4.1.1</mongodb.spring-data.version>
-        <rdf4j.version>4.3.2</rdf4j.version>
-        <jwt.version>0.11.5</jwt.version>
+        <rdf4j.version>4.3.12</rdf4j.version>
+        <jwt.version>0.12.6</jwt.version>
         <lombok.version>1.18.34</lombok.version>
-        <rdf-resolver.version>0.1.2-SNAPSHOT</rdf-resolver.version>
 
         <!-- Test -->
-        <httpclient5.version>5.2.1</httpclient5.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
 
         <!-- Plugins -->
-        <plugin.license.version>4.2</plugin.license.version>
+        <plugin.license.version>4.5</plugin.license.version>
         <plugin.jacoco.version>0.7.6.201602180812</plugin.jacoco.version>
         <plugin.coveralls.version>4.3.0</plugin.coveralls.version>
         <plugin.javax_xml_bind.version>2.3.1</plugin.javax_xml_bind.version>
-        <plugin.git_commit_id.version>6.0.0</plugin.git_commit_id.version>
+        <plugin.git_commit_id.version>9.0.0</plugin.git_commit_id.version>
         <plugin.rdf4j_generator.version>0.2.0</plugin.rdf4j_generator.version>
-        <plugin.checkstyle.version>3.3.0</plugin.checkstyle.version>
-        <plugin.spotbugs.version>4.7.3.5</plugin.spotbugs.version>
+        <plugin.checkstyle.version>3.4.0</plugin.checkstyle.version>
+        <plugin.spotbugs.version>4.8.6.6</plugin.spotbugs.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <!-- https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry -->
-            <!-- https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow -->
-            <!-- use <id> to specify github PAT in ~/.m2/settings.xml <server> section: https://maven.apache.org/settings.html#servers -->
-            <id>github-packages</id>
-            <name>Github Packages</name>
-            <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY_OWNER}/*</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -123,9 +95,19 @@
         <!--   Project related  -->
         <!-- ////////////////// -->
         <dependency>
-            <groupId>nl.dtls</groupId>
+            <groupId>org.fairdatateam.rdf</groupId>
             <artifactId>spring-rdf-migration</artifactId>
             <version>${spring.rdf.migration.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fairdatateam.rdf</groupId>
+            <artifactId>rdf-resource-resolver-core</artifactId>
+            <version>${rdf-resolver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fairdatateam.rdf</groupId>
+            <artifactId>rdf-resource-resolver-api</artifactId>
+            <version>${rdf-resolver.version}</version>
         </dependency>
 
         <!-- ////////////////// -->
@@ -173,11 +155,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.github.fairdatateam</groupId>
-            <artifactId>spring-security-acl-mongodb</artifactId>
-            <version>${spring.security.acl.mongo.version}</version>
-        </dependency>
 
         <!-- ////////////////// -->
         <!--   Mongock          -->
@@ -189,11 +166,6 @@
         <dependency>
             <groupId>io.mongock</groupId>
             <artifactId>mongodb-springdata-v4-driver</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>${mongodb.spring-data.version}</version>
         </dependency>
 
         <!-- ////////////////// -->
@@ -248,16 +220,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.fairdatateam</groupId>
-            <artifactId>rdf-resource-resolver-core</artifactId>
-            <version>${rdf-resolver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.fairdatateam</groupId>
-            <artifactId>rdf-resource-resolver-api</artifactId>
-            <version>${rdf-resolver.version}</version>
-        </dependency>
 
         <!-- ////////////////// -->
         <!--   Test             -->
@@ -296,7 +258,8 @@
                 <configuration>
                     <header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
                     <properties>
-                        <owner>DTL</owner>
+                        <owner>FAIR Data Team</owner>
+                        <year>2016-2025</year>
                     </properties>
                     <mapping>
                         <java>JAVADOC_STYLE</java>
@@ -351,7 +314,7 @@
                         </goals>
                         <configuration>
                             <classifier>spring-boot</classifier>
-                            <mainClass>nl.dtls.fairdatapoint.Application</mainClass>
+                            <mainClass>org.fairdatapoint.Application</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -375,12 +338,12 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>10.12.1</version>
+                        <version>10.17.0</version>
                     </dependency>
                     <dependency>
                         <groupId>io.spring.javaformat</groupId>
                         <artifactId>spring-javaformat-checkstyle</artifactId>
-                        <version>0.0.39</version>
+                        <version>0.0.42</version>
                     </dependency>
                 </dependencies>
             </plugin>
