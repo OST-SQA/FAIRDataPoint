@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.fairdatapoint</groupId>
     <artifactId>fairdatapoint</artifactId>
-    <version>1.17.2</version>
+    <version>1.17.3</version>
     <packaging>jar</packaging>
 
     <name>FairDataPoint</name>
