@@ -107,7 +107,7 @@ public class JwtService {
         }
     }
 
-    private String buildToken(UserAccount user) {
+    private String buildToken(User user) {
         final Claims claims = Jwts.claims().subject(user.getUuid().toString()).build();
         final Date now = new Date();
         final Date validity = new Date(now.getTime() + (expiration * DAY_MS));
