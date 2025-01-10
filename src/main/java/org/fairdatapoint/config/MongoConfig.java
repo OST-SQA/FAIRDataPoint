@@ -43,7 +43,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
         basePackages = {
             "org.fairdatapoint",
             "org.fairdatateam.rdf.migration",
-            "org.springframework.security.acls"
+            "org.fairdatateam.security.acls"
         }
 )
 public class MongoConfig {
