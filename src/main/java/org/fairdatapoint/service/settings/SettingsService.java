@@ -124,6 +124,7 @@ public class SettingsService {
     private List<SettingsSearchFilter> updateSearchFilters(SettingsUpdateDTO dto, Settings settings) {
         // Delete old
         searchFilterRepository.deleteAll(settings.getSearchFilters());
+        entityManager.flush();
         // Add new
         final List<SettingsSearchFilter> searchFilters = new ArrayList<>();
         final List<SearchFilterDTO> dtos = dto.getSearch().getFilters();
