@@ -438,11 +438,11 @@ public class MetadataSchemaService {
         final Map<UUID, MetadataSchemaVersion> allSchemas = versionRepository
                 .findAllByState(MetadataSchemaState.LATEST)
                 .stream()
-                .collect(Collectors.toMap(MetadataSchemaVersion::getUuid, Function.identity()));
+                .collect(Collectors.toMap(MetadataSchemaVersion::extractSchemaUuid, Function.identity()));
         final Set<UUID> addedSchemaUuids = new HashSet<>();
         final List<MetadataSchemaVersion> result = new ArrayList<>();
         schemas.forEach(schema -> {
-            addedSchemaUuids.add(schema.getUuid());
+            addedSchemaUuids.add(schema.extractSchemaUuid());
             result.add(schema);
         });
         int index = 0;
@@ -584,7 +584,7 @@ public class MetadataSchemaService {
                 .map(MetadataSchemaVersion::extractSchemaUuid)
                 .collect(Collectors.toSet());
         // Create new metadata schemas (root object with matching UUID)
-        final List<MetadataSchema> newSchemas = schemaRepository.saveAllAndFlush(
+        schemaRepository.saveAllAndFlush(
                 reqDtos.stream()
                         .map(MetadataSchemaVersionDTO::getUuid)
                         .filter(uuid -> !toBePresentUuids.contains(uuid))
