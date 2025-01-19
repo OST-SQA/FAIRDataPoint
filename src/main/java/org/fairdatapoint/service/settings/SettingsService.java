@@ -123,9 +123,6 @@ public class SettingsService {
 
     private List<SettingsSearchFilter> updateSearchFilters(SettingsUpdateDTO dto, Settings settings) {
         // Delete old
-        settings
-                .getSearchFilters()
-                .forEach(searchFilter -> searchFilterItemRepository.deleteAll(searchFilter.getItems()));
         searchFilterRepository.deleteAll(settings.getSearchFilters());
         // Add new
         final List<SettingsSearchFilter> searchFilters = new ArrayList<>();

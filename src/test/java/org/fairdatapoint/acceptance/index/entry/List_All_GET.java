@@ -33,6 +33,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -90,7 +91,6 @@ public class List_All_GET extends WebIntegrationTest {
         indexEntryRepository.deleteAll();
         List<IndexEntry> entries = TestIndexEntryFixtures.entriesFew();
         indexEntryRepository.saveAll(entries);
-        int size = 9;
 
         // AND: prepare request
         RequestEntity<?> request = RequestEntity

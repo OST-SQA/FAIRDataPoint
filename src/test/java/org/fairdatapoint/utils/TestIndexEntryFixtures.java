@@ -31,13 +31,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 public class TestIndexEntryFixtures {
 
-    private static IndexEntry newIndexEntry(UUID uuid, String clientUrl, Instant timestamp) {
+    private static IndexEntry newIndexEntry(String clientUrl, Instant timestamp) {
         IndexEntry indexEntry = new IndexEntry();
-        indexEntry.setUuid(uuid);
+        indexEntry.setUuid(null);
         indexEntry.setClientUrl(clientUrl);
         indexEntry.setUpdatedAt(timestamp);
         indexEntry.setCreatedAt(timestamp);
@@ -46,33 +45,33 @@ public class TestIndexEntryFixtures {
         return indexEntry;
     }
 
-    private static IndexEntry newIndexEntry(UUID uuid, String clientUrl, Instant timestamp,
+    private static IndexEntry newIndexEntry(String clientUrl, Instant timestamp,
                                             IndexEntryPermit permit) {
-        IndexEntry indexEntry = newIndexEntry(uuid, clientUrl, timestamp);
+        IndexEntry indexEntry = newIndexEntry(clientUrl, timestamp);
         indexEntry.setPermit(permit);
         return indexEntry;
     }
 
     public static IndexEntry entryExample() {
-        return newIndexEntry(UUID.fromString("7663c0c2-2b9d-4787-968d-d284ff3fc5bd"), "http://example.com", Instant.now());
+        return newIndexEntry("http://example.com", Instant.now());
     }
 
     public static List<IndexEntry> entriesDefault() {
         final Instant ref = Instant.now();
-        final IndexEntry entryActive1 = newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c0"), "http://example.com/active1", ref.minus(Duration.ofMinutes(2)));
+        final IndexEntry entryActive1 = newIndexEntry("http://example.com/active1", ref.minus(Duration.ofMinutes(2)));
         entryActive1.setState(IndexEntryState.VALID);
         entryActive1.setLastRetrievalAt(ref.minus(Duration.ofMinutes(1)));
-        final IndexEntry entryInactive1 = newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c1"), "http://example.com/inactive1", ref.minus(Duration.ofDays(20)));
+        final IndexEntry entryInactive1 = newIndexEntry("http://example.com/inactive1", ref.minus(Duration.ofDays(20)));
         entryInactive1.setState(IndexEntryState.VALID);
         entryInactive1.setLastRetrievalAt(ref.minus(Duration.ofDays(20)));
-        final IndexEntry entryInactive2 = newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c2"), "http://example.com/inactive2", ref.minus(Duration.ofDays(666)));
+        final IndexEntry entryInactive2 = newIndexEntry("http://example.com/inactive2", ref.minus(Duration.ofDays(666)));
         entryInactive2.setState(IndexEntryState.VALID);
         entryInactive2.setLastRetrievalAt(ref.minus(Duration.ofDays(666)));
-        final IndexEntry entryUnknown1 = newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c3"), "http://example.com/unknown1", ref);
+        final IndexEntry entryUnknown1 = newIndexEntry("http://example.com/unknown1", ref);
         entryUnknown1.setState(IndexEntryState.UNKNOWN);
-        final IndexEntry entryInvalid1 = newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c4"), "http://example.com/invalid1", ref);
+        final IndexEntry entryInvalid1 = newIndexEntry("http://example.com/invalid1", ref);
         entryInvalid1.setState(IndexEntryState.INVALID);
-        final IndexEntry entryUnreachable1 = newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c5"), "http://example.com/unreachable1", ref);
+        final IndexEntry entryUnreachable1 = newIndexEntry("http://example.com/unreachable1", ref);
         entryUnreachable1.setState(IndexEntryState.UNREACHABLE);
         return Arrays.asList(
                 entryActive1,
@@ -87,18 +86,18 @@ public class TestIndexEntryFixtures {
     public static List<IndexEntry> entriesFew() {
         final Instant ref = Instant.now();
         return Arrays.asList(
-                newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c3"), "http://example.com", ref),
-                newIndexEntry(UUID.fromString("b6cfa934-dc67-4b88-b8f9-c63448c8272c"), "http://test.com", ref.minusSeconds(1)),
-                newIndexEntry(UUID.fromString("da9ddfb8-6fdb-41b1-889e-387c8cbafc39"), "http://localhost", ref.minusSeconds(2))
+                newIndexEntry("http://example.com", ref),
+                newIndexEntry("http://test.com", ref.minusSeconds(1)),
+                newIndexEntry("http://localhost", ref.minusSeconds(2))
         );
     }
 
     public static List<IndexEntry> entriesPermits() {
         Instant ref = Instant.now();
         return Arrays.asList(
-                newIndexEntry(UUID.fromString("09200532-18b4-4721-86dd-fbfa13ec78c3"), "http://example.com/accepted", ref, IndexEntryPermit.ACCEPTED),
-                newIndexEntry(UUID.fromString("b6cfa934-dc67-4b88-b8f9-c63448c8272c"), "http://example.com/rejected", ref, IndexEntryPermit.REJECTED),
-                newIndexEntry(UUID.fromString("da9ddfb8-6fdb-41b1-889e-387c8cbafc39"), "http://example.com/pending", ref, IndexEntryPermit.PENDING)
+                newIndexEntry("http://example.com/accepted", ref, IndexEntryPermit.ACCEPTED),
+                newIndexEntry("http://example.com/rejected", ref, IndexEntryPermit.REJECTED),
+                newIndexEntry("http://example.com/pending", ref, IndexEntryPermit.PENDING)
         );
     }
 
@@ -107,8 +106,7 @@ public class TestIndexEntryFixtures {
         Instant ref = Instant.now();
         for (int i = 0; i < n; i++) {
             Instant entryTime = ref.minusSeconds(i);
-            entries.add(newIndexEntry(UUID.randomUUID(), "http://example" + i + ".com",
-                    entryTime));
+            entries.add(newIndexEntry("http://example" + i + ".com", entryTime));
         }
         return entries;
     }

@@ -243,7 +243,7 @@ public class IndexEntryService {
         else {
             log.info("Storing new entry {}", clientUrl);
             entry = new IndexEntry();
-            entry.setUuid(UUID.randomUUID());
+            entry.setUuid(null);
             entry.setClientUrl(clientUrl);
             entry.setCreatedAt(Instant.now());
             if (settings.getAutoPermit()) {

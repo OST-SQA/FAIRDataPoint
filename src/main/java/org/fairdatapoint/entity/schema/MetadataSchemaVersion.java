@@ -52,11 +52,11 @@ public class MetadataSchemaVersion extends BaseEntityCustomUUID {
     @JoinColumn(name = "metadata_schema_id", nullable = false)
     private MetadataSchema schema;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "previous_version_id", nullable = false)
     private MetadataSchemaVersion previousVersion;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "previousVersion")
+    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "previousVersion")
     private MetadataSchemaVersion nextVersion;
 
     @NotNull

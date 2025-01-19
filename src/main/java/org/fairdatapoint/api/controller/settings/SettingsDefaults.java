@@ -30,7 +30,6 @@ import org.fairdatapoint.util.KnownUUIDs;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -61,14 +60,14 @@ public class SettingsDefaults {
     public List<SettingsMetric> defaultMetrics(Settings settings) {
         return List.of(
                 SettingsMetric.builder()
-                        .uuid(UUID.randomUUID())
+                        .uuid(null)
                         .metricUri("https://purl.org/fair-metrics/FM_F1A")
                         .resourceUri("https://www.ietf.org/rfc/rfc3986.txt")
                         .settings(settings)
                         .orderPriority(1)
                         .build(),
                 SettingsMetric.builder()
-                        .uuid(UUID.randomUUID())
+                        .uuid(null)
                         .metricUri("https://purl.org/fair-metrics/FM_A1.1")
                         .resourceUri("https://www.wikidata.org/wiki/Q8777")
                         .settings(settings)

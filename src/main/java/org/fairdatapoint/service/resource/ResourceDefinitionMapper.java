@@ -29,14 +29,13 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class ResourceDefinitionMapper {
 
     public ResourceDefinition fromChangeDTO(ResourceDefinitionChangeDTO dto) {
         return ResourceDefinition.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .name(dto.getName())
                 .urlPrefix(dto.getUrlPrefix())
                 .build();
@@ -119,7 +118,7 @@ public class ResourceDefinitionMapper {
 
     public MetadataSchemaUsage toUsage(MetadataSchema schema, ResourceDefinition definition, int orderPriority) {
         return MetadataSchemaUsage.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .usedMetadataSchema(schema)
                 .resourceDefinition(definition)
                 .orderPriority(orderPriority)
@@ -130,7 +129,7 @@ public class ResourceDefinitionMapper {
             ResourceDefinitionLinkDTO dto, ResourceDefinition definition, int orderPriority
     ) {
         return ResourceDefinitionLink.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .title(dto.getTitle())
                 .propertyUri(dto.getPropertyUri())
                 .resourceDefinition(definition)
@@ -144,7 +143,7 @@ public class ResourceDefinitionMapper {
             ResourceDefinitionChildDTO dto, ResourceDefinition source, ResourceDefinition target, int orderPriority
     ) {
         return ResourceDefinitionChild.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .relationUri(dto.getRelationUri())
                 .title(dto.getListView().getTitle())
                 .tagsUri(dto.getListView().getTagsUri())
@@ -160,7 +159,7 @@ public class ResourceDefinitionMapper {
             ResourceDefinitionChildListViewMetadataDTO dto, ResourceDefinitionChild child, int orderPriority
     ) {
         return ResourceDefinitionChildMetadata.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .title(dto.getTitle())
                 .propertyUri(dto.getPropertyUri())
                 .child(child)
