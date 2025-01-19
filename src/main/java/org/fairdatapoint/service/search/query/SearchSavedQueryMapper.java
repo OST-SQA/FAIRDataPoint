@@ -33,7 +33,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.Optional;
-import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -64,7 +63,7 @@ public class SearchSavedQueryMapper {
             SearchSavedQueryChangeDTO reqDto, UserAccount userAccount
     ) {
         return SearchSavedQuery.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .name(reqDto.getName())
                 .description(reqDto.getDescription())
                 .type(reqDto.getType())

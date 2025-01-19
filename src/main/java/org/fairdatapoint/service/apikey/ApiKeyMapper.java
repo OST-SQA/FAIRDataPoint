@@ -27,8 +27,6 @@ import org.fairdatapoint.entity.apikey.ApiKey;
 import org.fairdatapoint.entity.user.UserAccount;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Component
 public class ApiKeyMapper {
 
@@ -38,7 +36,7 @@ public class ApiKeyMapper {
 
     public ApiKey createApiKey(UserAccount userAccount, String token) {
         return ApiKey.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .token(token)
                 .userAccount(userAccount)
                 .build();

@@ -299,7 +299,7 @@ public class MetadataSchemaMapper {
             MetadataSchemaVersion version, MetadataSchema metadataSchema, int orderPriority
     ) {
         return MetadataSchemaExtension.builder()
-                .uuid(UUID.randomUUID())
+                .uuid(null)
                 .extendedMetadataSchema(metadataSchema)
                 .metadataSchemaVersion(version)
                 .orderPriority(orderPriority)

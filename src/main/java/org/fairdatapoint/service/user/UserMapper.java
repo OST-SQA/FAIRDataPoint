@@ -28,8 +28,6 @@ import org.fairdatapoint.entity.user.UserAccount;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Component
 @RequiredArgsConstructor
 public class UserMapper {
@@ -56,14 +54,14 @@ public class UserMapper {
     }
 
     public UserAccount fromCreateDTO(UserCreateDTO dto) {
-        return
-                new UserAccount(
-                        UUID.randomUUID(),
-                        dto.getFirstName(),
-                        dto.getLastName(),
-                        dto.getEmail(),
-                        passwordEncoder.encode(dto.getPassword()),
-                        dto.getRole());
+        return UserAccount.builder()
+                .uuid(null)
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
+                .email(dto.getEmail())
+                .passwordHash(passwordEncoder.encode(dto.getPassword()))
+                .role(dto.getRole())
+                .build();
     }
 
     public UserAccount fromChangeDTO(UserChangeDTO dto, UserAccount user) {

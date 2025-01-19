@@ -42,14 +42,17 @@ import java.util.List;
 @SuperBuilder
 public class MetadataSchema extends BaseEntityCustomUUID {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "schema")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+            orphanRemoval = true, mappedBy = "schema")
     private List<MetadataSchemaVersion> versions;
 
     @OrderBy("orderPriority")
-    @OneToMany(mappedBy = "extendedMetadataSchema", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "extendedMetadataSchema", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
     private List<MetadataSchemaExtension> extensions;
 
     @OrderBy("orderPriority")
-    @OneToMany(mappedBy = "usedMetadataSchema", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usedMetadataSchema", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
     private List<MetadataSchemaUsage> usages;
 }

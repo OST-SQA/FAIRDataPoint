@@ -160,14 +160,14 @@ public class MetadataSchemaService {
             return false;
         }
         final MetadataSchemaVersion draft = oDraft.get();
-        final boolean isOnlyVersion = draft.getSchema().getVersions().size() == 1;
-        extensionRepository.deleteAll(draft.getExtensions());
-        versionRepository.delete(draft);
+        final boolean isOnlyVersion = versionRepository.getBySchemaUuid(draft.getSchema().getUuid()).size() == 1;
+        entityManager.clear();
 
         if (isOnlyVersion) {
-            usageRepository.deleteAll(draft.getSchema().getUsages());
-            extensionRepository.deleteAll(draft.getSchema().getExtensions());
             schemaRepository.delete(draft.getSchema());
+        }
+        else {
+            versionRepository.delete(draft);
         }
         return true;
     }
@@ -256,6 +256,7 @@ public class MetadataSchemaService {
         }
         // Validate and fix links
         final MetadataSchemaVersion schema = oSchema.get();
+        final boolean isOnlyVersion = versionRepository.getBySchemaUuid(schema.getSchema().getUuid()).size() == 1;
         if (schema.isLatest()) {
             if (schema.getPreviousVersion() == null) {
                 metadataSchemaValidator.validateNotUsed(schema.getSchema());
@@ -274,13 +275,14 @@ public class MetadataSchemaService {
             schema.getNextVersion().setPreviousVersion(schema.getPreviousVersion());
             versionRepository.save(schema.getNextVersion());
         }
+        entityManager.flush();
+        entityManager.clear();
 
-        final boolean isOnlyVersion = schema.getSchema().getVersions().size() == 1;
-        versionRepository.delete(schema);
         if (isOnlyVersion) {
-            usageRepository.deleteAll(schema.getSchema().getUsages());
-            extensionRepository.deleteAll(schema.getSchema().getExtensions());
             schemaRepository.delete(schema.getSchema());
+        }
+        else {
+            versionRepository.delete(schema);
         }
         return true;
     }
@@ -300,9 +302,6 @@ public class MetadataSchemaService {
             throw new ValidationException("You can't delete INTERNAL Shape");
         }
         // Delete
-        versionRepository.deleteAll(schema.getVersions());
-        extensionRepository.deleteAll(schema.getExtensions());
-        usageRepository.deleteAll(schema.getUsages());
         schemaRepository.delete(schema);
         entityManager.flush();
         // Update cache
