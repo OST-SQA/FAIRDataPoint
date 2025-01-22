@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.1</version>
+        <version>3.2.12</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>nl.dtls</groupId>
+    <groupId>org.fairdatateam.fairdatapoint</groupId>
     <artifactId>fairdatapoint</artifactId>
-    <version>1.17.2</version>
+    <version>1.17.3</version>
     <packaging>jar</packaging>
 
     <name>FairDataPoint</name>
@@ -40,6 +40,10 @@
             <organizationUrl>http://www.dtls.nl/</organizationUrl>
             <url>https://github.com/kburger</url>
         </developer>
+        <developer>
+            <name>dennisvang</name>
+            <url>https://github.com/dennisvang</url>
+        </developer>
     </developers>
 
     <properties>
@@ -47,62 +51,35 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Maven -->
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
         <!-- Project related -->
-        <spring.rdf.migration.version>1.2.0.RELEASE</spring.rdf.migration.version>
-        <spring.security.acl.mongo.version>5.2.4.RELEASE</spring.security.acl.mongo.version>
-
+        <spring.rdf.migration.version>2.0.0</spring.rdf.migration.version>
+        <spring.security.acl.mongo.version>6.0.0</spring.security.acl.mongo.version>
+        <rdf-resolver.version>0.2.0</rdf-resolver.version>
+        
         <!-- Core -->
-        <springdoc.version>2.1.0</springdoc.version>
+        <springdoc.version>2.5.0</springdoc.version>
         <mongock.version>5.3.1</mongock.version>
         <mongodb.spring-data.version>4.1.1</mongodb.spring-data.version>
-        <rdf4j.version>4.3.2</rdf4j.version>
-        <jwt.version>0.11.5</jwt.version>
-        <lombok.version>1.18.28</lombok.version>
-        <rdf-resolver.version>0.1.2-SNAPSHOT</rdf-resolver.version>
+        <rdf4j.version>4.3.12</rdf4j.version>
+        <jwt.version>0.12.6</jwt.version>
+        <lombok.version>1.18.36</lombok.version>
 
         <!-- Test -->
-        <httpclient5.version>5.2.1</httpclient5.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
 
         <!-- Plugins -->
-        <plugin.license.version>4.2</plugin.license.version>
+        <plugin.license.version>4.5</plugin.license.version>
         <plugin.jacoco.version>0.7.6.201602180812</plugin.jacoco.version>
         <plugin.coveralls.version>4.3.0</plugin.coveralls.version>
         <plugin.javax_xml_bind.version>2.3.1</plugin.javax_xml_bind.version>
-        <plugin.git_commit_id.version>6.0.0</plugin.git_commit_id.version>
+        <plugin.git_commit_id.version>9.0.0</plugin.git_commit_id.version>
         <plugin.rdf4j_generator.version>0.2.0</plugin.rdf4j_generator.version>
-        <plugin.checkstyle.version>3.3.0</plugin.checkstyle.version>
-        <plugin.spotbugs.version>4.7.3.5</plugin.spotbugs.version>
+        <plugin.checkstyle.version>3.4.0</plugin.checkstyle.version>
+        <plugin.spotbugs.version>4.8.6.6</plugin.spotbugs.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Nexus Releases</name>
-            <url>https://nexus.internal.fairdatapoint.org/repository/maven-releases/</url>
-        </repository>
-        <repository>
-            <id>nexus-snapshots</id>
-            <name>Nexus Snapshots</name>
-            <url>https://nexus.internal.fairdatapoint.org/repository/maven-snapshots/</url>
-        </repository>
-    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -122,9 +99,24 @@
         <!--   Project related  -->
         <!-- ////////////////// -->
         <dependency>
-            <groupId>nl.dtls</groupId>
+            <groupId>org.fairdatateam.rdf</groupId>
             <artifactId>spring-rdf-migration</artifactId>
             <version>${spring.rdf.migration.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fairdatateam.rdf</groupId>
+            <artifactId>rdf-resource-resolver-core</artifactId>
+            <version>${rdf-resolver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fairdatateam.rdf</groupId>
+            <artifactId>rdf-resource-resolver-api</artifactId>
+            <version>${rdf-resolver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fairdatateam.security</groupId>
+            <artifactId>spring-security-acl-mongodb</artifactId>
+            <version>${spring.security.acl.mongo.version}</version>
         </dependency>
 
         <!-- ////////////////// -->
@@ -172,11 +164,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-acl-mongodb</artifactId>
-            <version>${spring.security.acl.mongo.version}</version>
-        </dependency>
 
         <!-- ////////////////// -->
         <!--   Mongock          -->
@@ -194,6 +181,7 @@
             <artifactId>spring-data-mongodb</artifactId>
             <version>${mongodb.spring-data.version}</version>
         </dependency>
+
 
         <!-- ////////////////// -->
         <!--   Core             -->
@@ -247,16 +235,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.fairdevkit</groupId>
-            <artifactId>rdf-resource-resolver-core</artifactId>
-            <version>${rdf-resolver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.fairdevkit</groupId>
-            <artifactId>rdf-resource-resolver-api</artifactId>
-            <version>${rdf-resolver.version}</version>
-        </dependency>
 
         <!-- ////////////////// -->
         <!--   Test             -->
@@ -295,7 +273,8 @@
                 <configuration>
                     <header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
                     <properties>
-                        <owner>DTL</owner>
+                        <owner>FAIR Data Team</owner>
+                        <year>2016-2025</year>
                     </properties>
                     <mapping>
                         <java>JAVADOC_STYLE</java>
@@ -350,7 +329,7 @@
                         </goals>
                         <configuration>
                             <classifier>spring-boot</classifier>
-                            <mainClass>nl.dtls.fairdatapoint.Application</mainClass>
+                            <mainClass>org.fairdatateam.fairdatapoint.Application</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -360,6 +339,21 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <!-- workaround for "constructor cannot be applied to given types" issue	-->
+                            <!-- https://intellij-support.jetbrains.com/hc/en-us/community/posts/23064675521682-Lombok-not-workin-with-Intellij -->
+                            <version>1.18.36</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -374,12 +368,12 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>10.12.1</version>
+                        <version>10.17.0</version>
                     </dependency>
                     <dependency>
                         <groupId>io.spring.javaformat</groupId>
                         <artifactId>spring-javaformat-checkstyle</artifactId>
-                        <version>0.0.39</version>
+                        <version>0.0.42</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -390,6 +384,7 @@
             </plugin>
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
+<!-- BEWARE: mv clean compile after switching branches, otherwise http://localhost:8080/actuator/info will return the wrong commit -->
                 <artifactId>git-commit-id-maven-plugin</artifactId>
                 <version>${plugin.git_commit_id.version}</version>
                 <executions>
@@ -435,7 +430,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <package>nl.dtls.fairdatapoint.vocabulary</package>
+                    <package>org.fairdatateam.fairdatapoint.vocabulary</package>
                     <addGeneratedAnnotation>false</addGeneratedAnnotation>
                     <vocabularies>
                         <vocabulary>
