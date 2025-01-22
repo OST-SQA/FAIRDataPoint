@@ -8,7 +8,7 @@
         <version>3.2.12</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.fairdatapoint</groupId>
+    <groupId>org.fairdatateam.fairdatapoint</groupId>
     <artifactId>fairdatapoint</artifactId>
     <version>1.17.3</version>
     <packaging>jar</packaging>
@@ -330,7 +330,7 @@
                         </goals>
                         <configuration>
                             <classifier>spring-boot</classifier>
-                            <mainClass>org.fairdatapoint.Application</mainClass>
+                            <mainClass>org.fairdatateam.fairdatapoint.Application</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -431,7 +431,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <package>org.fairdatapoint.vocabulary</package>
+                    <package>org.fairdatateam.fairdatapoint.vocabulary</package>
                     <addGeneratedAnnotation>false</addGeneratedAnnotation>
                     <vocabularies>
                         <vocabulary>
