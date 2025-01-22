@@ -7,6 +7,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.17.3]
+
+### Changed
+
+- Upgraded dependencies to match develop branch
+- Changed package name from `nl.dtls.fairdatapoint` to `org.fairdatateam.fairdatapoint`
+- Switched to org.fairdatateam dependencies from maven central
+
 ## [1.17.2]
 
 ### Fixed
