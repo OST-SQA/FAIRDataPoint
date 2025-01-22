@@ -40,6 +40,10 @@
             <organizationUrl>http://www.dtls.nl/</organizationUrl>
             <url>https://github.com/kburger</url>
         </developer>
+        <developer>
+            <name>dennisvang</name>
+            <url>https://github.com/dennisvang</url>
+        </developer>
     </developers>
 
     <properties>
@@ -52,7 +56,7 @@
 
         <!-- Project related -->
         <spring.rdf.migration.version>2.0.0</spring.rdf.migration.version>
-        <spring.security.acl.mongo.version>6.0.0.RELEASE</spring.security.acl.mongo.version>
+        <spring.security.acl.mongo.version>6.0.0</spring.security.acl.mongo.version>
         <rdf-resolver.version>0.2.0</rdf-resolver.version>
         
         <!-- Core -->
@@ -381,6 +385,7 @@
             </plugin>
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
+<!-- BEWARE: mv clean compile after switching branches, otherwise http://localhost:8080/actuator/info will return the wrong commit -->
                 <artifactId>git-commit-id-maven-plugin</artifactId>
                 <version>${plugin.git_commit_id.version}</version>
                 <executions>
