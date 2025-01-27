@@ -34,7 +34,9 @@ import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -85,4 +87,20 @@ public class WebConfig implements WebMvcConfigurer {
     public InternalResourceViewResolver defaultViewResolver() {
         return new InternalResourceViewResolver();
     }
+
+    // https://docs.spring.io/spring-framework/reference/web/webmvc-cors.html
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                // todo: what about OPTIONS?
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
+                .allowedHeaders(
+                        HttpHeaders.ORIGIN,
+                        HttpHeaders.AUTHORIZATION,
+                        HttpHeaders.ACCEPT,
+                        HttpHeaders.CONTENT_TYPE)
+                .exposedHeaders(HttpHeaders.LOCATION, HttpHeaders.LINK);
+    }
+
 }
