@@ -16,6 +16,7 @@ the [FAIR Data Point software specification](https://specs.fairdatapoint.org) do
 More information about FDP, how to deploy it and use it can be found in
 the [FDP Deployment and REST API usage Documentation](https://fairdatapoint.readthedocs.io/).
 
+
 ## Related GitHub Projects
 
 - [FAIR Data Point Client](https://github.com/FAIRDataTeam/FAIRDataPoint-client)
