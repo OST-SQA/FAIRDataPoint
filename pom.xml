@@ -75,6 +75,9 @@
         <plugin.rdf4j_generator.version>0.2.0</plugin.rdf4j_generator.version>
         <plugin.checkstyle.version>3.3.0</plugin.checkstyle.version>
         <plugin.spotbugs.version>4.7.3.5</plugin.spotbugs.version>
+        <!-- For SonarQube -->
+        <sonar.organization>ost-sqa</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <repositories>
